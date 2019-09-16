@@ -1,5 +1,5 @@
 // AtCoderの問題ページから入力値と出力値のJSONを取得するスクリプト
-(function() {
+(() => {
   var selector = 'span.lang-en div.div-btn-copy + pre';
   var i = document.createElement('input');
   i.value = JSON.stringify(
