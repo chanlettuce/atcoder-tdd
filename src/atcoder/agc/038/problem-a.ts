@@ -44,6 +44,6 @@ if (!process.env.LOCAL_DEBUG) {
   input.setEncoding('utf8');
   const lines: string[] = [];
   createInterface({ input, output })
-    .on('line', line => lines.push(line))
+    .on('line', (line: string) => lines.push(line))
     .on('close', () => main(lines));
 }

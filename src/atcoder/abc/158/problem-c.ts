@@ -5,29 +5,30 @@ const main = (lines: string[]) => {
 };
 
 export const solve = (lines: string[]): string => {
-  const S = parseLines(lines);
+  const { A, B } = parseLines(lines);
 
-  const c = S.split('');
-  let buf = '';
-  let prev = '';
-  let cnt = 0;
-
-  c.forEach(e => {
-    buf += e;
-    if (buf === prev) {
-      return;
+  const N1: number[] = [];
+  for (let i = 1; i < 1001; i++) {
+    if (Math.floor(i * 0.08) === A) {
+      N1.push(i);
     }
+  }
 
-    prev = buf;
-    buf = '';
-    ++cnt;
-  });
+  const N2: number[] = [];
+  for (let i = 1; i < 1001; i++) {
+    if (Math.floor(i * 0.1) === B) {
+      N2.push(i);
+    }
+  }
 
-  return cnt.toString();
+  const N = N1.find(n1 => N2.findIndex(n2 => n1 === n2) !== -1);
+
+  return (N || -1).toString();
 };
 
 const parseLines = (lines: string[]) => {
-  const obj = lines[0];
+  const [A, B] = lines[0].split(' ').map(e => +e);
+  const obj = { A, B };
   debug(obj);
   return obj;
 };

@@ -4,13 +4,13 @@ import { solve as c } from './problem-c';
 import { solve as d } from './problem-d';
 
 type Solver = (lines: string[]) => string;
-type Params = Array<[string, string]>;
-type Problems = Array<{
+type Params = [string, string][];
+type Problems = {
   level: string;
   solver: Solver;
   json: string;
   customParams?: Params;
-}>;
+}[];
 
 const contestName = '';
 const problems: Problems = [

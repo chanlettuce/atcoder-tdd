@@ -10,7 +10,9 @@ const solve = (lines: string[]): string => {
   let ans = 0;
   for (let i = 1; i <= M; ++i) {
     const idx = AB.findIndex(({ A }) => A <= i);
-    if (idx !== -1) ans += AB.splice(idx, 1)[0].B;
+    if (idx !== -1) {
+      ans += AB.splice(idx, 1)[0].B;
+    }
   }
 
   return ans.toString();
@@ -32,17 +34,19 @@ const parseLines = (lines: string[]) => {
 };
 
 const debug = (message?: any, ...optionalParams: any[]) => {
-  if (!!process.env.LOCAL_DEBUG) console.log(message, ...optionalParams);
+  if (!!process.env.LOCAL_DEBUG) {
+    console.log(message, ...optionalParams);
+  }
 };
 
 if (!process.env.LOCAL_DEBUG) {
   const { stdin: input, stdout: output } = process;
   input.resume();
   input.setEncoding('utf8');
-  const lines = [];
+  const lines: string[] = [];
   require('readline')
     .createInterface({ input, output })
-    .on('line', line => lines.push(line))
+    .on('line', (line: string) => lines.push(line))
     .on('close', () => main(lines));
 }
 

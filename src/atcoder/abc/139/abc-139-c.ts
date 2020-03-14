@@ -1,5 +1,3 @@
-import { homedir } from 'os';
-
 const main = lines => {
   console.log(solve(lines));
 };
@@ -13,8 +11,9 @@ const solve = (lines: string[]): string => {
   let result = 0;
 
   for (let i = 0; i < a; ++i) {
-    if (H[i] >= H[i + 1]) ++tmp;
-    else {
+    if (H[i] >= H[i + 1]) {
+      ++tmp;
+    } else {
       result = Math.max(tmp, result);
       tmp = 0;
     }
@@ -32,17 +31,19 @@ const parseLines = (lines: string[]) => {
 };
 
 const debug = (message?: any, ...optionalParams: any[]) => {
-  if (!!process.env.LOCAL_DEBUG) console.log(message, ...optionalParams);
+  if (!!process.env.LOCAL_DEBUG) {
+    console.log(message, ...optionalParams);
+  }
 };
 
 if (!process.env.LOCAL_DEBUG) {
   const { stdin: input, stdout: output } = process;
   input.resume();
   input.setEncoding('utf8');
-  const lines = [];
+  const lines: string[] = [];
   require('readline')
     .createInterface({ input, output })
-    .on('line', line => lines.push(line))
+    .on('line', (line: string) => lines.push(line))
     .on('close', () => main(lines));
 }
 

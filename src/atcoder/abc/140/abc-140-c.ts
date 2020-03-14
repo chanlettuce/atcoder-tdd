@@ -11,7 +11,9 @@ const solve = (lines: string[]): string => {
 
   let cnt = 0;
   cnt += B[0] + B[N - 2];
-  for (let i = 1, e = N - 1; i < e; i++) cnt += Math.min(B[i - 1], B[i]);
+  for (let i = 1, e = N - 1; i < e; i++) {
+    cnt += Math.min(B[i - 1], B[i]);
+  }
 
   return cnt.toString();
 };
@@ -23,17 +25,19 @@ const parseLines = (lines: string[]) => {
 };
 
 const debug = (message?: any, ...optionalParams: any[]) => {
-  if (!!process.env.LOCAL_DEBUG) console.log(message, ...optionalParams);
+  if (!!process.env.LOCAL_DEBUG) {
+    console.log(message, ...optionalParams);
+  }
 };
 
 if (!process.env.LOCAL_DEBUG) {
   const { stdin: input, stdout: output } = process;
   input.resume();
   input.setEncoding('utf8');
-  const lines = [];
+  const lines: string[] = [];
   require('readline')
     .createInterface({ input, output })
-    .on('line', line => lines.push(line))
+    .on('line', (line: string) => lines.push(line))
     .on('close', () => main(lines));
 }
 

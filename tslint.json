@@ -1,5 +1,5 @@
 {
-  "extends": ["tslint:recommended", "tslint-config-prettier"],
+  "extends": ["tslint:recommended", "tslint-react", "tslint-config-prettier"],
   "rulesDirectory": ["tslint-plugin-prettier"],
   "rules": {
     "prettier": [
@@ -15,12 +15,11 @@
       }
     ],
     "interface-name": [true, "never-prefix"],
-    "no-console": false,
-    "no-default-export": true,
-    "no-empty": false,
+    "no-default-export": false,
     "object-literal-sort-keys": false,
-    "ordered-imports": true
+    "ordered-imports": true,
+    "no-console": false,
+    "no-var-requires": false
   },
-
   "defaultSeverity": "error"
 }

@@ -7,7 +7,9 @@ const solve = (lines: string[]): string => {
 
   return A.reduce(
     (acc, cur) => {
-      if (acc.prev + 1 === +cur) acc.sum += +C[+cur - 2];
+      if (acc.prev + 1 === +cur) {
+        acc.sum += +C[+cur - 2];
+      }
       acc.prev = +cur;
       acc.sum += +B[+cur - 1];
       return acc;
@@ -23,17 +25,19 @@ const parseLines = (lines: string[]) => {
 };
 
 const debug = (message?: any, ...optionalParams: any[]) => {
-  if (!!process.env.LOCAL_DEBUG) console.log(message, ...optionalParams);
+  if (!!process.env.LOCAL_DEBUG) {
+    console.log(message, ...optionalParams);
+  }
 };
 
 if (!process.env.LOCAL_DEBUG) {
   const { stdin: input, stdout: output } = process;
   input.resume();
   input.setEncoding('utf8');
-  const lines = [];
+  const lines: string[] = [];
   require('readline')
     .createInterface({ input, output })
-    .on('line', line => lines.push(line))
+    .on('line', (line: string) => lines.push(line))
     .on('close', () => main(lines));
 }
 

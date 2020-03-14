@@ -1,4 +1,4 @@
-import { solve as a } from './problem-a';
+import { solve as c } from './problem-c';
 
 type Solver = (lines: string[]) => string;
 type Params = [string, string][];
@@ -12,9 +12,9 @@ type Problems = {
 const contestName = '';
 const problems: Problems = [
   {
-    level: 'a',
-    solver: a,
-    json: `[["aabbaa","4"],["aaaccacabaababc","12"]]`,
+    level: 'c',
+    solver: c,
+    json: `[["2 2","25"],["8 10","100"],["19 99","-1"]]`,
   },
 ];
 

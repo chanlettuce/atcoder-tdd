@@ -18,8 +18,6 @@ const runTest = (solver, params, customParams = []) => {
 jest.setTimeout(1000 * 2);
 
 describe('ABC134', () => {
-  describe('D', () => {});
-
   describe('C', () => {
     const json = `[["3\\n1\\n4\\n3","4\\n3\\n4"],["2\\n5\\n5","5\\n5"]]`;
     const params = JSON.parse(json);
